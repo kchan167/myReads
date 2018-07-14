@@ -10,9 +10,20 @@ class Bookmenu extends React.Component {
             <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-            <Bookshelf bookShelfTitle="Currently Reading" books={this.props.books.currentlyReading}/>
-            <Bookshelf bookShelfTitle="Want To Read" books={this.props.books.wantToRead}/>
-            <Bookshelf bookShelfTitle="Read" books={this.props.books.read}/>
+            <Bookshelf
+                bookShelfTitle="Currently Reading"
+                books={this.props.books.filter(book => book.shelf === "currentlyReading")}
+                key="currently"
+            />
+            <Bookshelf
+                bookShelfTitle="Want To Read"
+                books={this.props.books.filter(book => book.shelf ==="wantToRead")}
+                key="wantToRead"/>
+            <Bookshelf
+                bookShelfTitle="Read"
+                books={this.props.books.filter(book => book.shelf === "read")}
+                key="read"
+                />
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>

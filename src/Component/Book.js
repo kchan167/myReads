@@ -3,12 +3,21 @@ import PropTypes from "prop-types";
 
 class Book extends React.Component {
     render() {
-        console.log(this.props.book);
+        let book = this.props.book;
 
         return (
             <div className="book">
               <div className="book-top">
-                <div className="book-cover" style={{ width: 128, height: 193, background: this.props.book.url}}></div>
+                <div
+                    className="book-cover"
+                    style=
+                    {{
+                        width: 128,
+                        height: 193,
+                        background: "url(" + book.imageLinks.thumbnail + ")"
+                    }}
+                >
+                </div>
                 <div className="book-shelf-changer">
                   <select>
                     <option value="move" disabled>Move to...</option>
@@ -19,8 +28,12 @@ class Book extends React.Component {
                   </select>
                 </div>
               </div>
-              <div className="book-title">{this.props.book.title}</div>
-              <div className="book-authors">{this.props.book.author}</div>
+              <div className="book-title">{book.title}</div>
+              <div className="book-authors">
+                  {book.authors.map((author) => (
+                      <div key={author}>{author}</div>
+                  ))}
+              </div>
             </div>
         )
     }

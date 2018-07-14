@@ -12,7 +12,7 @@ class Bookshelf extends React.Component {
                     {
                         // Need to loop books inside the bookshelf
                         this.props.books.map((book) => (
-                            <li key={book.title} class={book.title.trim()}>
+                            <li key={book.title} className={book.title.trim()}>
                                 <Book book={book}/>
                             </li>
                         ))
