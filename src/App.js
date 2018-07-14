@@ -29,6 +29,14 @@ class BooksApp extends React.Component {
       });
   }
 
+  changeShelf = (book: any, shelf: string) => {
+      if(shelf !== book.shelf) {
+          BooksAPI.update(book, shelf).then(response => {
+              this.getBooks();
+          });
+      }
+  }
+
   render() {
     return (
       <div className="app">
@@ -54,7 +62,7 @@ class BooksApp extends React.Component {
               </div>
             </div>
           ) : (
-              <Bookmenu books={this.state.books}/>
+              <Bookmenu books={this.state.books} onChangeShelf={this.changeShelf}/>
           )}
       </div>
     )

@@ -14,15 +14,19 @@ class Bookmenu extends React.Component {
                 bookShelfTitle="Currently Reading"
                 books={this.props.books.filter(book => book.shelf === "currentlyReading")}
                 key="currently"
+                onChangeShelf={this.props.onChangeShelf}
             />
             <Bookshelf
                 bookShelfTitle="Want To Read"
                 books={this.props.books.filter(book => book.shelf ==="wantToRead")}
-                key="wantToRead"/>
+                key="wantToRead"
+                onChangeShelf={this.props.onChangeShelf}
+                />
             <Bookshelf
                 bookShelfTitle="Read"
                 books={this.props.books.filter(book => book.shelf === "read")}
                 key="read"
+                onChangeShelf={this.props.onChangeShelf}
                 />
             </div>
             <div className="open-search">
