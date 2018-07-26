@@ -4,6 +4,16 @@ This is the starter template for the final assessment project for Udacity's Reac
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
+## Update History
+
+- f386cbd feat: Separate website into 3 React Components
+- 8104730 feat: MyReads app now read data from BooksAPI
+- f386cbd feat: Books can now be changed Shelf
+- 8104730 feat: MyReads app now read data from BooksAPI
+- eed031c feat: Books can now be changed Shelf
+- 7051376 feat: Add react-router-dom and SearchBooks page
+- 92c8842 feat: Added search page
+
 ## TL;DR
 
 To get started developing right away:
