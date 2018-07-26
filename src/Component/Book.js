@@ -4,20 +4,38 @@ import PropTypes from "prop-types";
 class Book extends React.Component {
     render() {
         let book = this.props.book;
+        const isImage = book.imageLinks;
 
         return (
             <div className="book">
               <div className="book-top">
-                <div
-                    className="book-cover"
-                    style=
-                    {{
-                        width: 128,
-                        height: 193,
-                        background: "url(" + book.imageLinks.thumbnail + ")"
-                    }}
-                >
-                </div>
+                {
+                    isImage ? (
+                        <div
+                            className="book-cover"
+                            style=
+                            {{
+                                width: 128,
+                                height: 193,
+                                background: "url(" + book.imageLinks.thumbnail + ")"
+                            }}
+                            >
+                        </div>
+                    ) : (
+                        // Doesn't have an image background
+                        <div
+                            className="book-cover"
+                            style=
+                            {{
+                                width: 128,
+                                height: 193,
+                                // white background
+                                background: "url(http://via.placeholder.com/128x193?text=?)"
+                            }}
+                            >
+                        </div>
+                    )
+                }
                 <div className="book-shelf-changer">
                   <select
                       defaultValue={this.props.book.shelf || "none"}
@@ -33,9 +51,11 @@ class Book extends React.Component {
               </div>
               <div className="book-title">{book.title}</div>
               <div className="book-authors">
-                  {book.authors.map((author) => (
-                      <div key={author}>{author}</div>
-                  ))}
+                  {book.hasOwnProperty('authors') && (
+                      book.authors.map((author) => (
+                          <div key={author}>{author}</div>
+                      ))
+                  )}
               </div>
             </div>
         )

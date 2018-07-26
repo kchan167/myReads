@@ -17,10 +17,13 @@ class BooksApp extends React.Component {
      books: []
  };
 
+  // componentDidMount function
   // Get data from BooksAPI immediately after a component is mounted
   componentDidMount() {
       this.getBooks();
   }
+
+  // getBooks function
   // Get data from BooksAPI
   getBooks() {
       BooksAPI.getAll().then(data => {
@@ -30,8 +33,10 @@ class BooksApp extends React.Component {
       });
   }
 
+  // changeShelf function
+  // using update function from BooksAPI to change book's bookShelfTitle
   changeShelf = (book: any, shelf: string) => {
-      if(shelf !== book.shelf) {
+      if ( shelf !== book.shelf) {
           BooksAPI.update(book, shelf).then(response => {
               this.getBooks();
           });
@@ -49,10 +54,7 @@ class BooksApp extends React.Component {
         )}/>
 
         <Route path="/search" render={() => (
-            <SearchBooks
-                books={this.state.books}
-                onChangeShelf={this.changeShelf}
-            />
+            <SearchBooks bookOnShelf={this.state.books} onChangeShelf={this.changeShelf}/>
         )}/>
       </div>
     )
